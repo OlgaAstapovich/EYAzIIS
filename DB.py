@@ -49,7 +49,3 @@ def save_table(DB_table_name, view_table):
         add_word(DB_table_name, view_table.item(item)["values"][0:1][0], view_table.item(item)["values"][1:2][0],
                  view_table.item(item)["values"][2:3][0])
 
-
-if __name__ == "__main__":
-    # create_table("my_test_dictionary")
-    add_word("my_test_dictionary", "word", 3245, "information")
