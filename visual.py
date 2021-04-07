@@ -2,8 +2,7 @@ from tkinter import *
 from tkinter import ttk
 from tkinter.scrolledtext import ScrolledText
 from tkinter import messagebox
-from DB import *
-import sys
+from DB_connector import *
 
 
 from text_processing import *
@@ -22,7 +21,7 @@ class Window:
         self.root.config(menu=self.menubar)
         self.filemenu = Menu(self.menubar)
         self.filemenu.add_command(label="New", command=self.draw_input_widgets)
-        self.filemenu.add_command(label="Open dictionary", command=load_table)
+        self.filemenu.add_command(label="Open dictionary", command=lambda :(self.show_dictionary(), load_table('my_dictionary', self.dictionary)))
         self.filemenu.add_command(label="Load text from file",
                                   command=self.create_dictionary_from_text_file)
         self.filemenu.add_command(label="Save", command=lambda: save_table("my_dictionary", self.dictionary))

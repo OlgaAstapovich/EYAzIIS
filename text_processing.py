@@ -1,10 +1,5 @@
 import nltk
-from nltk.stem.snowball import PorterStemmer
-from nltk.stem import WordNetLemmatizer
-from nltk.corpus import wordnet
 from nltk.corpus import stopwords
-import string
-import re
 import pandas as pd
 from tkinter.filedialog import *
 
@@ -18,7 +13,6 @@ def download_text_from_file():
         for line in file:
             text.append(line)
         return text
-
 
 
 def download_input_text(textfield):

@@ -45,7 +45,19 @@ def load_table(DB_table_name, view_table):
 
 
 def save_table(DB_table_name, view_table):
-    for item in view_table.get_children():
-        add_word(DB_table_name, view_table.item(item)["values"][0:1][0], view_table.item(item)["values"][1:2][0],
-                 view_table.item(item)["values"][2:3][0])
+    try:
+        for item in view_table.get_children():
+            add_word(DB_table_name, view_table.item(item)["values"][0:1][0], view_table.item(item)["values"][1:2][0],
+                     view_table.item(item)["values"][2:3][0])
+    except AttributeError:
+        print('There is nothing to save')
+
+
+def clear_DB(name):
+    database = connect()
+    my_cursor = database.cursor()
+    my_cursor.execute(
+        "TRUNCATE TABLE {};".format(name))
+    database.commit()
+    database.close()
 
